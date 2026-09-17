@@ -28,6 +28,9 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 base {
@@ -137,6 +140,13 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // Um compileOnly pra cada mod-alvo — só pra enxergar as classes deles
+    // na hora de escrever/compilar os mixins. "compileOnly" porque na
+    // prática, quem tem o jar de verdade rodando é o usuário final (ele
+    // já vai ter os dois mods instalados no modpack).
+    compileOnly "modid_do_mod_alvo:modid_do_mod_alvo:1.0.0"
+    // Repitam uma linha dessas pra cada mod que tiver mixin.
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
